@@ -59,6 +59,7 @@ TEST_CASE("Heap Insertions Fail", "[heap]"){
         place = i;
         newPlace = place;
         ptrPlace = myHeap.insertData(place);
+	    REQUIRE(*ptrPlace == newPlace);
     }
     REQUIRE_THROWS_AS(myHeap.insertData(place), std::invalid_argument);
     

@@ -1,6 +1,4 @@
-
 #include "catch/catch_amalgamated.hpp"
-#include <iostream>
 #include <bits/stdc++.h>
 
 #define private public
@@ -9,7 +7,7 @@
 //#include "../src/littlec.h"
 //#include "../src/stack.h"
 //#include "../src/trie.h"
-#include "../src/heap.h"
+#include "../src/ll.h"
 
 using namespace std;
 
@@ -17,7 +15,6 @@ using namespace std;
 // the syntax for defining a test is below. It is important for the name to be unique, but you can group multiple tests with [tags]. A test can have [multiple][tags] using that syntax.
 
 TEST_CASE("Test 2", "[flag]"){
-	// you can also use "sections" to share setup code between tests, for example:
 	int one = 1;
 
 	SECTION("num is 2") {
@@ -33,35 +30,50 @@ TEST_CASE("Test 2", "[flag]"){
 	// each section runs the setup code independently to ensure that they don't affect each other
 }
 
-// you must write 5 unique, meaningful tests for credit on the testing portion of this project!
 
 
-TEST_CASE("Heap Insertions", "[heap]"){
-	// you can also use "sections" to share setup code between tests, for example:
-	heap myHeap(15);
+TEST_CASE("LL Insertion", "[heap]"){
+	LL myLL;
     int place = 15;
-    int newPlace = place;
-    int* ptrPlace = myHeap.insertData(place);
-
-	REQUIRE(*ptrPlace == newPlace);
-	REQUIRE(place != newPlace);
-
-	// each section runs the setup code independently to ensure that they don't affect each other
+    long int ptrPlace = myLL.insertData(place);
+	REQUIRE(*myLL.find(ptrPlace) == place);
 }
 
-TEST_CASE("Heap Insertions Fail", "[heap]"){
-	// you can also use "sections" to share setup code between tests, for example:
-	heap myHeap(15);
+TEST_CASE("Multiple LL Insertions", "[heap]"){
+	LL myLL;
     int place;
-    int newPlace;
-    int* ptrPlace;
+    long int ptrPlace;
     for (int i = 0; i < 15; i++){
         place = i;
-        newPlace = place;
-        ptrPlace = myHeap.insertData(place);
-	    REQUIRE(*ptrPlace == newPlace);
+        ptrPlace = myLL.insertData(place);
+        std::cout << ":> " << ptrPlace << std::endl;
+	    REQUIRE(*myLL.find(ptrPlace) == place);
     }
-    REQUIRE_THROWS_AS(myHeap.insertData(place), std::invalid_argument);
-    
-	// each section runs the setup code independently to ensure that they don't affect each other
 }
+
+TEST_CASE("Heap Deletion", "[heap]"){
+	LL myHeap;
+    int place;
+    int newPlace;
+    long int ptrPlace;
+    std::vector<int> soln;
+    std::vector<long int> rem;
+    for (int i = 0; i < 15; i++){
+        place = i;
+        if (i != 12 && i != 3){
+            soln.push_back(i);
+        }
+        ptrPlace = myHeap.insertData(place);
+        if (i == 12 || i ==3)
+            rem.push_back(ptrPlace);
+    } 
+    REQUIRE(myHeap.removeData(rem[0]));
+    REQUIRE(myHeap.removeData(rem[1]));
+    
+    Data* final_heap = myHeap.getLL();
+    for (int i:soln){
+        REQUIRE(i == *(final_heap->data));
+        final_heap = final_heap->next;
+    }
+}
+

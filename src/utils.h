@@ -1,6 +1,6 @@
 #include <string>
 /*
- * Utils:
+ * util::
  *  LinkedList
  *  - insert(N data)
  *  - getHead() -> N
@@ -18,6 +18,12 @@
  *  - peek() -> g
  *  - pop() -> g
  *
+ * Stepan:
+ *  Write a class that accepts a DataTracker Object, and builds a graph from that object
+ *  
+ *  DataTracker
+ *  - getTimePerInsertion() -> std::vector<float>
+ *
  */
 
 
@@ -32,16 +38,19 @@ namespace util{
         type_wrapper(void* val){
             this->val = val;
         }
-        type_wrapper(int& val){
-            this->val =(void*)&val;
+        type_wrapper(int val){
+            int* temp = new int(val);
+            this->val =(void*)temp;
             this->size = 4;
         }
-        type_wrapper(char& val){
-            this->val =(void*)&val;
+        type_wrapper(char val){
+            char* temp = new char(val);
+            this->val =(void*)temp;
             this->size = 1;
         }
-        type_wrapper(std::string& val){
-            this->val =(void*)&val;
+        type_wrapper(std::string val){
+            std::string* temp = new std::string(val);
+            this->val =(void*)temp;
             this->size = sizeof(val);
         }
     
@@ -51,6 +60,9 @@ namespace util{
         int get_int(){
             return (*(int*)val);
         }
+        bool get_bool(){
+            return (*(bool*)val);
+        }
         char get_char(){
             return (*(char*)val);
         }
@@ -58,6 +70,18 @@ namespace util{
             return (*(std::string*)val);
         }
     };
+
+    class DataTracker{
+        std::vector<float> insertionTime;
+      public:
+        std::vector<float> getTimePerInsertion(){
+            for (int i = 0; i < 50; i++){
+                insertionTime.push_back((float) i);
+            }
+            return insertionTime;
+        }
+    };
+
 
     template <typename N>
     class linkedlist{

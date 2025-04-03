@@ -1,0 +1,48 @@
+#include "utils.h"
+#include <stdlib.h>
+#include <string>
+
+struct node{
+    util::type_wrapper data;
+    int size;
+    bool flag;
+    node** alphabet;
+    
+    node(){
+        flag = false;
+        size = 0;
+        data = util::type_wrapper();
+        alphabet = (node**)malloc(sizeof(node*)*52);
+        for (int i = 0; i < 52; i++){
+            alphabet[i] = nullptr;
+        }
+    }
+};
+
+
+class TrieMemory{
+    node* head;
+
+  public:
+    TrieMemory(){
+        head = nullptr; 
+    }
+    //~TrieMemory(){
+    //    for (int i = 0; i < 52; i++){
+    //        if (head->alphabet[i] != nullptr){
+    //            delete_node(head->alphabet[i]);
+    //        }
+    //    }
+    //    free(head);
+    //}
+    bool insert(std::string var_name, void* data, int size);
+    
+    bool insert(std::string var_name, util::type_wrapper data);
+    
+    bool insert_helper(std::string var_name, int i, void* data, int size, node* temp_node);
+    //void delete_node(node* value);
+    util::type_wrapper find(std::string);
+    node* find_node(std::string var_name, int& i);
+    
+    //void operate(std::string one, std::string two, auto (*funcptr)(auto one, auto two));
+};

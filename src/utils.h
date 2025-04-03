@@ -1,0 +1,175 @@
+#include <string>
+/*
+ * Utils:
+ *  LinkedList
+ *  - insert(N data)
+ *  - getHead() -> N
+ *  - popHead() -> N
+ *  - getTail() -> N
+ *  - popTail() -> N
+ *
+ *  queue
+ *  - push(G data)
+ *  - peek() -> G
+ *  - pop() -> G
+ *
+ *  stack
+ *  - push(G data)
+ *  - peek() -> g
+ *  - pop() -> g
+ *
+ */
+
+
+namespace util{
+    struct type_wrapper{
+        void* val;
+        int size;
+    
+        type_wrapper(){
+            this->val = nullptr;
+        }
+        type_wrapper(void* val){
+            this->val = val;
+        }
+        type_wrapper(int& val){
+            this->val =(void*)&val;
+            this->size = 4;
+        }
+        type_wrapper(char& val){
+            this->val =(void*)&val;
+            this->size = 1;
+        }
+        type_wrapper(std::string& val){
+            this->val =(void*)&val;
+            this->size = sizeof(val);
+        }
+    
+        bool has_data(){
+            return (val != nullptr);
+        }
+        int get_int(){
+            return (*(int*)val);
+        }
+        char get_char(){
+            return (*(char*)val);
+        }
+        std::string get_string(){
+            return (*(std::string*)val);
+        }
+    };
+
+    template <typename N>
+    class linkedlist{
+        struct node{
+            node* next;
+            node* prev;
+            N data;
+            node(N data){
+                this->data = data;
+                this->next = nullptr;
+                this->prev = nullptr;
+            };
+        };
+        node* head;
+        node* tail;
+      public:
+        linkedlist(){
+            head = nullptr;
+            tail = nullptr;
+        };
+        void insert(N data){
+            node* temp = new node(data);
+            if (head == nullptr){
+                head = tail = temp;
+                return;
+            }
+            tail->next = temp;
+            temp->prev = tail;
+            tail = temp;
+        }
+        N getHead(){
+            if (tail == nullptr){
+                return  *(new N());
+            }
+            return head->data;
+        }
+        N popHead(){
+            node* temp = head;
+            if (tail == nullptr){
+                return  *(new N());
+            }
+            if (tail == head){
+                N _temp = temp->data;
+                delete temp;
+                head = tail = nullptr;
+                return _temp;
+            }
+            head = head->next;
+            N _temp = temp->data;
+            delete temp;
+            head->prev = nullptr;
+            return _temp;
+        }
+        N getTail(){
+            if (tail == nullptr){
+                return *(new N());
+            }
+            return tail->data;
+        }
+        N popTail(){
+            node* temp = tail;
+            if (tail == nullptr){
+                return *(new N());
+            }
+            if (tail == head){
+                N _temp = temp->data;
+                delete temp;
+                head = tail = nullptr;
+                return _temp;
+            }
+            tail = temp->prev;
+            tail->next = nullptr;
+            N _temp = temp->data;
+            delete temp;
+            return _temp;
+        }
+    };
+    
+    template <typename G>
+    class queue{
+        linkedlist<G> base;
+    
+      public:
+        void push(G data){
+            base.insert(data);
+        }
+    
+        G peek(){
+            return base.getHead();
+        }
+        
+        G pop(){
+            return base.popHead();
+        }
+    };
+    
+    
+    template<typename T>
+    class stack{
+        linkedlist<T> base;
+    
+      public:
+        void push(T data){
+            base.insert(data);
+        }
+    
+        T peek(){
+            return base.getTail();
+        }
+        
+        T pop(){
+            return base.popTail();
+        }
+    };
+};

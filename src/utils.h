@@ -1,4 +1,5 @@
 #include <string>
+#include <vector>
 /*
  * util::
  *  LinkedList
@@ -34,6 +35,7 @@ namespace util{
     
         type_wrapper(){
             this->val = nullptr;
+            size = 0;
         }
         type_wrapper(void* val){
             this->val = val;
@@ -52,6 +54,10 @@ namespace util{
             std::string* temp = new std::string(val);
             this->val =(void*)temp;
             this->size = sizeof(val);
+        }
+
+        void clear_data(){
+            free(val);
         }
     
         bool has_data(){

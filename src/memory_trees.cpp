@@ -1,4 +1,4 @@
-#include "memory_trees.h"
+#include "../headers/memory_trees.h"
 
 bool TrieMemory::insert(std::string var_name, void* data, int size){
     if (head == nullptr){

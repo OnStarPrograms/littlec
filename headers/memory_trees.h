@@ -69,7 +69,7 @@ class TrieMemory{
     util::type_wrapper find(std::string);
     node* find_node(std::string var_name, int& i);
     
-    //void operate(std::string one, std::string two, auto (*funcptr)(auto one, auto two));
+    bool operate(std::string one, std::string two, char op);
 };
 
 class SplayMemory{
@@ -79,12 +79,16 @@ class SplayMemory{
     SplayMemory(){
         head = nullptr;
     }
+    ~SplayMemory(){
+        delete_node(head);
+    }
     void zig(node* temp);
     void zag(node* temp);
-
     void splay(node* found);
     node* find_node(std::string name);
+    void delete_node(node* value);
     void insert(std::string name, util::type_wrapper data);
     util::type_wrapper find(std::string name);
+    void operate(std::string one, std::string two, char op);
 };
 

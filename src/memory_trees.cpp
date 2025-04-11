@@ -166,7 +166,7 @@ util::type_wrapper SplayMemory::find(std::string name){
             temp = temp->left;
         }
         else{
-            break;
+            return util::type_wrapper();
         }
     }
     return temp->data;
@@ -209,4 +209,12 @@ void SplayMemory::insert(std::string name, util::type_wrapper data){
         return;
     }
     splay(temp);
+};
+
+void SplayMemory::delete_node(node* value){
+    if (value == nullptr)
+        return;
+    delete_node(value->left);
+    delete_node(value->right);
+    delete value;
 };

@@ -77,17 +77,6 @@ namespace util{
         }
     };
 
-    class DataTracker{
-        std::vector<float> insertionTime;
-      public:
-        std::vector<float> getTimePerInsertion(){
-            for (int i = 0; i < 50; i++){
-                insertionTime.push_back((float) i);
-            }
-            return insertionTime;
-        }
-    };
-
 
     template <typename N>
     class linkedlist{
@@ -200,6 +189,18 @@ namespace util{
         
         T pop(){
             return base.popTail();
+        }
+    };
+
+
+    class DataTracker{
+        std::vector<float> insertionTime;
+    public:
+        std::vector<float> getTimePerInsertion(){
+            for (int i = 0; i < 50; i++){
+                insertionTime.push_back((float) i);
+            }
+            return insertionTime;
         }
     };
 };

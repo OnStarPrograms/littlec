@@ -83,33 +83,6 @@ util::type_wrapper TrieMemory::find(std::string var_name){
 }
 
 
-/*
-util::type_wrapper SplayMemory::find(std::string name){
-    head = splay(head, name);
-    node* temp = head;
-        
-    while (temp != nullptr && temp->name != name){
-        if (temp->name > name){
-            temp = temp->right;
-        }
-        else if (temp->name < name){
-            temp = temp->left;
-        }
-        else{
-            break;
-        }
-    }
-    if (temp == nullptr){
-        return util::type_wrapper();
-    }
-    else if (temp->name != name){
-        return util::type_wrapper();
-    }
-    return temp->data;
-}
-
-*/
-
 void SplayMemory::zig(node* temp){
     node* left = temp->left;
     node* top = temp->top;

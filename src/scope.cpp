@@ -34,6 +34,21 @@ bool scope::operator()(std::string name, std::string right_name, char op){
     return var;
 }
 
+util::type_wrapper scope::get_var(std::string name){
+    util::type_wrapper var;
+    for (int i = 0; i <= scopelevel; i++){
+        
+        splays_scope[i].find(name);
+        
+        var = tries_scope[i].find(name);
+       
+        if (var.has_data() != false){
+            break;
+        }
+    }
+    return var;
+}
+
 util::DataTracker scope::getData(){
     return util::DataTracker();
 }

@@ -169,10 +169,12 @@ namespace util{
     template <typename G>
     class queue{
         linkedlist<G> base;
+        int _size = 0;
     
       public:
         void push(G data){
             base.insert(data);
+            _size++;
         }
     
         G peek(){
@@ -180,7 +182,11 @@ namespace util{
         }
         
         G pop(){
+            _size--;
             return base.popHead();
+        }
+        int size(){
+            return _size;
         }
     };
     
@@ -188,10 +194,12 @@ namespace util{
     template<typename T>
     class stack{
         linkedlist<T> base;
+        int _size = 0;
     
       public:
         void push(T data){
             base.insert(data);
+            _size++;
         }
     
         T peek(){
@@ -199,7 +207,11 @@ namespace util{
         }
         
         T pop(){
+            _size--;
             return base.popTail();
+        }
+        int size(){
+            return _size;
         }
     };
 };

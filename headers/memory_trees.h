@@ -53,12 +53,14 @@ class TrieMemory{
         head = nullptr; 
     }
     ~TrieMemory(){
-        for (int i = 0; i < 52; i++){
-            if (head->alphabet[i] != nullptr){
-                delete_node(head->alphabet[i]);
-            }
-        }
-        delete head;
+//        if (head == nullptr)
+//            return;
+//        for (int i = 0; i < 52; i++){
+//            if (head->alphabet[i] != nullptr){
+//                delete_node(head->alphabet[i]);
+//            }
+//        }
+//        delete head;
     }
     bool insert(std::string var_name, void* data, int size);
     
@@ -70,6 +72,22 @@ class TrieMemory{
     node* find_node(std::string var_name, int& i);
     
     bool operate(std::string one, std::string two, char op);
+    void increment(std::string name){
+        int* a = (int*)find(name).val;
+        (*a)++;
+    };
+    void decrement(std::string name){
+        int* a = (int*)find(name).val;
+        (*a)--;
+    };
+    void increment(std::string name, int b){
+        int* a = (int*)find(name).val;
+        (*a)+=b;
+    };
+    void decrement(std::string name, int b){
+        int* a = (int*)find(name).val;
+        (*a)-=b;
+    };
 };
 
 class SplayMemory{
@@ -80,7 +98,7 @@ class SplayMemory{
         head = nullptr;
     }
     ~SplayMemory(){
-        delete_node(head);
+//        delete_node(head);
     }
     void zig(node* temp);
     void zag(node* temp);
@@ -90,5 +108,21 @@ class SplayMemory{
     void insert(std::string name, util::type_wrapper data);
     util::type_wrapper find(std::string name);
     void operate(std::string one, std::string two, char op);
+    void increment(std::string name){
+        int* a = (int*)find(name).val;
+        (*a)++;
+    };
+    void decrement(std::string name){
+        int* a = (int*)find(name).val;
+        (*a)--;
+    };
+    void increment(std::string name, int b){
+        int* a = (int*)find(name).val;
+        (*a)+=b;
+    };
+    void decrement(std::string name, int b){
+        int* a = (int*)find(name).val;
+        (*a)-=b;
+    };
 };
 

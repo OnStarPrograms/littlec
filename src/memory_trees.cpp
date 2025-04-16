@@ -1,5 +1,6 @@
 #include "../headers/memory_trees.h"
 
+
 void operations(node* first, node* second, char op){
     int first_size = first->data.size;
     int second_size = second->data.size;
@@ -64,6 +65,7 @@ void operations(node* first, node* second, char op){
 
     
 }
+
 
 bool TrieMemory::insert(std::string var_name, void* data, int size){
     if (head == nullptr){
@@ -229,6 +231,9 @@ void SplayMemory::splay(node* found){
         else if(temp->right == found){
             zag(temp);
         }
+        else{
+            break;
+        }
     }
 }
 
@@ -263,7 +268,7 @@ void SplayMemory::delete_node(node* value){
         return;
     delete_node(value->left);
     delete_node(value->right);
-    delete value;
+//    delete value;
 };
 
 void SplayMemory::operate(std::string one, std::string two, char op){

@@ -14,6 +14,9 @@ class scope{
     bool insert_var(std::string name, util::type_wrapper variable);
     util::DataTracker getData();
     util::type_wrapper get_var(std::string name);
+    void print_var(std::string name);
 
+    void increment_var(std::string name, int size);
+    void decrement_var(std::string name, int size);
     bool operator()(std::string name, std::string right_name, char op);
 };

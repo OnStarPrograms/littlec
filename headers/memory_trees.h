@@ -71,6 +71,7 @@ class TrieMemory{
     util::type_wrapper find(std::string);
     node* find_node(std::string var_name, int& i);
     
+
     bool operate(std::string one, std::string two, char op);
     void increment(std::string name){
         int* a = (int*)find(name).val;
@@ -87,6 +88,8 @@ class TrieMemory{
     void decrement(std::string name, int b){
         int* a = (int*)find(name).val;
         (*a)-=b;
+
+
     };
 };
 
@@ -123,6 +126,7 @@ class SplayMemory{
     void decrement(std::string name, int b){
         int* a = (int*)find(name).val;
         (*a)-=b;
+
     };
 };
 

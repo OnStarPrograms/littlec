@@ -73,6 +73,7 @@ bool scope::operator()(std::string name, std::string right_name, char op){
     }
     if (op == '~'){
         if (data_1->size == 4){
+            std::cout << data_1->data.get_int() << " : " << data_2->data.get_int() << std::endl;
             bool data__ = (data_1->data.get_int() == data_2->data.get_int());
             std::cout << data__ << std::endl; 
 

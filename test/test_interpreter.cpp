@@ -14,7 +14,7 @@ int main(){
     test.start_if();
     test.print_var("second_int");
     test.end_if();
-    
+   // 
     test.compare("first_int", "third_int", '~');
     test.start_if();
     test.print_var("fourth_int");

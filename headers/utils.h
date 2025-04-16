@@ -214,4 +214,36 @@ namespace util{
             return _size;
         }
     };
+
+    template<typename T>
+    class dequeue{
+        linkedlist<T> base;
+        int _size = 0;
+    
+      public:
+        void push(T data){
+            base.insert(data);
+            _size++;
+        }
+    
+        T peek_tail(){
+            return base.getTail();
+        }
+        
+        T pop_tail(){
+            _size--;
+            return base.popTail();
+        }
+        T peek_head(){
+            return base.getHead();
+        }
+        
+        T pop_head(){
+            _size--;
+            return base.popHead();
+        }
+        int size(){
+            return _size;
+        }
+    };
 };

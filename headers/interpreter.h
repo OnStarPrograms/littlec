@@ -55,16 +55,18 @@ class interpreter : public scope {
     bool end_if(){
         instructions[depth].peek_tail()->push("end_if");
         depth-=1;
+        instructions[depth].peek_tail()->push("out_scope_check");
+
         return true;
     };
 
     bool start_while(){
-        depth+=1;
         instructions[depth].peek_tail()->push("while");
-        try{
+        depth+=1;
+        if (instructions.size()-1 == depth){
             instructions[depth].push(new util::queue<std::string>);
         }
-        catch(...){
+        else{
             instructions.push_back(util::dequeue<util::queue<std::string>*>());
             instructions[depth].push(new util::queue<std::string>);
         }
@@ -72,6 +74,7 @@ class interpreter : public scope {
     };
     bool end_while(){
         depth-=1;
+        instructions[depth].peek_tail()->push("out_scope_check");
         return true;
     };
 
@@ -149,7 +152,6 @@ class interpreter : public scope {
             prev_commands.push_back(inst);
             
             std::cout << inst << std::endl; 
-            std::cout << program_depth << std::endl; 
             if (inst == "var"){
                 std::string name = instructions[program_depth].peek_head()->pop();
                 std::string type = instructions[program_depth].peek_head()->pop();
@@ -171,7 +173,7 @@ class interpreter : public scope {
                 prev_commands.push_back(instructions[program_depth].peek_head()->pop()); 
             }
             else if (inst == "if"){
-                if (compare_result.pop() == true){
+                if (compare_result.peek() == true){
                     program_depth+=1;
                     enter_scope();
 
@@ -182,9 +184,13 @@ class interpreter : public scope {
                 program_depth-=1;
                 leave_scope();
             }
+            else if (inst == "out_scope_check"){
+                if (compare_result.pop() == 0){
+                    instructions[program_depth+1].pop_head();
+                }
+            }
             else if (inst == "comp"){
                 char comp = (char)stoi(instructions[program_depth].peek_head()->pop());
-                std::cout << comp << std::endl;
                 std::string name = instructions[program_depth].peek_head()->pop();
                 std::string name_1 = instructions[program_depth].peek_head()->pop();
                
@@ -195,13 +201,13 @@ class interpreter : public scope {
                 compare_result.push(operator()(name, name_1, comp));
             else
                 operator()(name, name_1, comp);
-            std::cout << compare_result.peek() << std::endl << "====" << std::endl;
             }
             else if (inst == "while"){
-                if (compare_result.pop() == true){
+                if (compare_result.peek() == true){
                     program_depth+=1;
                     enter_scope();
                     while_loop.push(1);
+                    prev_commands.erase(prev_commands.begin());
                 }
                 instructions[program_depth].peek_head()->push("end_while");
             }
@@ -210,7 +216,7 @@ class interpreter : public scope {
                     program_depth-=1;
                     leave_scope();
                     while_loop.pop();
-                    instructions[program_depth].pop_head();
+//                    instructions[program_depth].pop_head();
                 }
             }
             else if (inst == "inc"){
@@ -235,13 +241,12 @@ class interpreter : public scope {
 
             }
 
-
             if (while_loop.size() > 0){
-                instructions[program_depth].push(new util::queue<std::string>);
-                for (std::string command:prev_commands)
-                    instructions[program_depth].peek_tail()->push(command);
+                for (std::string command : prev_commands)
+                      instructions[program_depth].peek_head()->push(command);
             }
             prev_commands.clear();
+
         }
     };
 };

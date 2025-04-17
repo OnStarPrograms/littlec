@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <chrono>
+#include <fstream>
 /*
  * util::
  *  LinkedList
@@ -275,6 +276,18 @@ namespace util{
             // create a txt file if it doesn't exist already
             // write each pair of string + float to a line in CSV format
             // will it be sorted? i dunno lmao
+            // Assuming path will always be to graph_data.js
+
+            // The graph within the HTML file uses Chart.js
+            // To send c++ data to JavaScript code, we can parse the data as a JS variable
+            // This piece of code writes a set of strings and creates a JS file
+            // When complete, this JS file is read as a variable within dataGraph.html
+            std::string TrieGraphX = "var TrieGraphX = [";
+            std::string TrieGraphY = "var TrieGraphY = [";
+            std::string SplayGraphX = "var SplayGraphX = [";
+            std::string SplayGraphY = "var SplayGraphY = [";
+            std::string ender = "];";
+
 
         }
     };

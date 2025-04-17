@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <chrono>
 /*
  * util::
  *  LinkedList
@@ -192,15 +193,32 @@ namespace util{
         }
     };
 
-
+    // no idea how I'm gonna test if this works lmao
     class DataTracker{
-        std::vector<float> insertionTime;
+        std::vector<pair<std::string, float>> insertionTime;
     public:
+        /* placeholder
         std::vector<float> getTimePerInsertion(){
             for (int i = 0; i < 50; i++){
                 insertionTime.push_back((float) i);
             }
             return insertionTime;
+        }
+        */
+        std::chrono::time_point<std::chrono::system_clock> start, end;
+        void tick() {
+            start = std::chrono::system_clock::now();
+        }
+        void tock(std::string command) {
+            end = std::chrono::system_clock::now();
+            std::chrono::duration<float> elapsed_seconds = end - start;
+            insertionTime.push_back(command, elapsed_seconds.count());
+        }
+        void writeToFile() {
+            // create a txt file if it doesn't exist already
+            // write each pair of string + float to a line in CSV format
+            // will it be sorted? i dunno lmao
+
         }
     };
 };

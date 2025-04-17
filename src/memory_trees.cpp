@@ -127,7 +127,7 @@ void TrieMemory::delete_node(node* value){
 node* TrieMemory::find_node(std::string var_name, int& i){
     node* temp = head;
     while(i < var_name.length()){
-        if (temp->alphabet[var_name[i]-'a'] != nullptr){
+        if (temp != nullptr && temp->alphabet[var_name[i]-'a'] != nullptr){
             temp = temp->alphabet[var_name[i]-'a'];
         }
         else{

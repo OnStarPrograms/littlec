@@ -248,5 +248,6 @@ class interpreter : public scope {
             prev_commands.clear();
 
         }
+        getData().writeToFile();
     };
 };

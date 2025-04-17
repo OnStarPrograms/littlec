@@ -159,10 +159,12 @@ namespace util{
     template <typename G>
     class queue{
         linkedlist<G> base;
+        int _size = 0;
     
       public:
         void push(G data){
             base.insert(data);
+            _size++;
         }
     
         G peek(){
@@ -170,7 +172,11 @@ namespace util{
         }
         
         G pop(){
+            _size--;
             return base.popHead();
+        }
+        int size(){
+            return _size;
         }
     };
     
@@ -178,10 +184,12 @@ namespace util{
     template<typename T>
     class stack{
         linkedlist<T> base;
+        int _size = 0;
     
       public:
         void push(T data){
             base.insert(data);
+            _size++;
         }
     
         T peek(){
@@ -189,7 +197,43 @@ namespace util{
         }
         
         T pop(){
+            _size--;
             return base.popTail();
+        }
+        int size(){
+            return _size;
+        }
+    };
+
+    template<typename T>
+    class dequeue{
+        linkedlist<T> base;
+        int _size = 0;
+    
+      public:
+        void push(T data){
+            base.insert(data);
+            _size++;
+        }
+    
+        T peek_tail(){
+            return base.getTail();
+        }
+        
+        T pop_tail(){
+            _size--;
+            return base.popTail();
+        }
+        T peek_head(){
+            return base.getHead();
+        }
+        
+        T pop_head(){
+            _size--;
+            return base.popHead();
+        }
+        int size(){
+            return _size;
         }
     };
 
@@ -197,14 +241,20 @@ namespace util{
     class DataTracker{
         std::vector<pair<std::string, float>> insertionTime;
     public:
-        /* placeholder
-        std::vector<float> getTimePerInsertion(){
+      /*
+        std::vector<float> getTrieTimePerInsertion(){
             for (int i = 0; i < 50; i++){
                 insertionTime.push_back((float) i);
             }
             return insertionTime;
         }
-        */
+        std::vector<float> getSplayTimePerInsertion(){
+            for (int i = 0; i < 50; i++){
+                insertionTime.push_back((float) i);
+            }
+            return insertionTime;
+        }
+       */
         std::chrono::time_point<std::chrono::system_clock> start, end;
         void tick() {
             start = std::chrono::system_clock::now();

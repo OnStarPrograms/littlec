@@ -1,5 +1,72 @@
 #include "../headers/memory_trees.h"
 
+
+void operations(node* first, node* second, char op){
+    int first_size = first->data.size;
+    int second_size = second->data.size;
+
+    if (first_size != second_size){
+        return;
+    }
+    int first_int = 0;
+    std::string first_string;
+    char first_char = 0;
+
+    int second_int = 0;
+    std::string second_string;
+    char second_char = 0;
+
+
+    if (first_size == 4)
+        first_int = first->data.get_int();
+    else if (first_size == 1)
+        first_char = first->data.get_char();
+    else
+        first_string = first->data.get_string();
+
+    if (second_size == 4)
+        second_int = second->data.get_int();
+    else if (second_size == 1)
+        second_char = second->data.get_char();
+    else
+        second_string = second->data.get_string();
+
+
+
+    if (op == '+'){
+        first_int += second_int;
+        first_char += second_char;
+        first_string += second_string;
+    }
+    else if (op == '-'){
+        first_int -= second_int;
+        first_char -= second_char;
+    }
+    else if (op == '/'){
+        first_int /= second_int;
+        first_char /= second_char;
+    }
+    else if (op == '*'){
+        first_int *= second_int;
+        first_char *= second_char;
+    }
+
+    first->data.clear_data();
+    if (first_size == 4){
+        first->data = util::type_wrapper(first_int);
+    }
+    else if (first_size == 1){
+        first->data = util::type_wrapper(first_char);
+    }
+    else{
+        first->data = util::type_wrapper(first_string);
+    }
+
+
+    
+}
+
+
 bool TrieMemory::insert(std::string var_name, void* data, int size){
     if (head == nullptr){
         head = new node();
@@ -8,6 +75,15 @@ bool TrieMemory::insert(std::string var_name, void* data, int size){
     int i = 0;
     node* temp = find_node(var_name, i);
     return insert_helper(var_name, i, data, size, temp);
+}
+
+bool TrieMemory::operate(std::string one, std::string two, char op){
+    int i = 0;
+    node* first_node = find_node(one, i);
+    i = 0;
+    node* second_node = find_node(two, i);
+    operations(first_node, second_node, op);
+    return true;
 }
 
 bool TrieMemory::insert(std::string var_name, util::type_wrapper data){
@@ -51,7 +127,7 @@ void TrieMemory::delete_node(node* value){
 node* TrieMemory::find_node(std::string var_name, int& i){
     node* temp = head;
     while(i < var_name.length()){
-        if (temp->alphabet[var_name[i]-'a'] != nullptr){
+        if (temp != nullptr && temp->alphabet[var_name[i]-'a'] != nullptr){
             temp = temp->alphabet[var_name[i]-'a'];
         }
         else{
@@ -155,6 +231,9 @@ void SplayMemory::splay(node* found){
         else if(temp->right == found){
             zag(temp);
         }
+        else{
+            break;
+        }
     }
 }
 
@@ -189,5 +268,11 @@ void SplayMemory::delete_node(node* value){
         return;
     delete_node(value->left);
     delete_node(value->right);
-    delete value;
+//    delete value;
 };
+
+void SplayMemory::operate(std::string one, std::string two, char op){
+    node* first_node = find_node(one);
+    node* second_node = find_node(two);
+    operations(first_node, second_node, op);
+}

@@ -238,8 +238,10 @@ namespace util{
     };
 
     // no idea how I'm gonna test if this works lmao
+// no idea how I'm gonna test if this works lmao
     class DataTracker{
-        std::vector<pair<std::string, float>> insertionTime;
+        std::vector<std::pair<std::string, float>> timeLogTrie;
+        std::vector<std::pair<std::string, float>> timeLogSplay;
     public:
       /*
         std::vector<float> getTrieTimePerInsertion(){
@@ -259,10 +261,15 @@ namespace util{
         void tick() {
             start = std::chrono::system_clock::now();
         }
-        void tock(std::string command) {
+        void tockTrie(std::string command) {
             end = std::chrono::system_clock::now();
             std::chrono::duration<float> elapsed_seconds = end - start;
-            insertionTime.push_back(command, elapsed_seconds.count());
+            timeLogTrie.push_back({command, elapsed_seconds.count()});
+        }
+        void tockSplay(std::string command) {
+            end = std::chrono::system_clock::now();
+            std::chrono::duration<float> elapsed_seconds = end - start;
+            timeLogSplay.push_back({command, elapsed_seconds.count()});
         }
         void writeToFile() {
             // create a txt file if it doesn't exist already

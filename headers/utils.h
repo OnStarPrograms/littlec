@@ -240,7 +240,13 @@ namespace util{
     class DataTracker{
         std::vector<float> insertionTime;
     public:
-        std::vector<float> getTimePerInsertion(){
+        std::vector<float> getTrieTimePerInsertion(){
+            for (int i = 0; i < 50; i++){
+                insertionTime.push_back((float) i);
+            }
+            return insertionTime;
+        }
+        std::vector<float> getSplayTimePerInsertion(){
             for (int i = 0; i < 50; i++){
                 insertionTime.push_back((float) i);
             }

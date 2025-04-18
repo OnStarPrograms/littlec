@@ -19,3 +19,7 @@ data: ./src/* ./test/*
 	g++ -std=c++14 -Werror -Wuninitialized -g test/test_data.cpp src/memory_trees.cpp src/scope.cpp -o build/test
 	./build/test
 
+million: ./src/* ./test/*
+	g++ -std=c++14 -Werror -Wuninitialized -g test/test_million_words.cpp src/memory_trees.cpp src/scope.cpp -o build/test
+	./build/test
+

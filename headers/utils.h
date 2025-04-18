@@ -1,5 +1,7 @@
 #include <string>
 #include <vector>
+#include <chrono>
+#include <fstream>
 /*
  * util::
  *  LinkedList
@@ -236,15 +238,57 @@ namespace util{
         }
     };
 
-
+    // no idea how I'm gonna test if this works lmao
+// no idea how I'm gonna test if this works lmao
     class DataTracker{
-        std::vector<float> insertionTime;
+        std::vector<std::pair<std::string, float>> timeLogTrie;
+        std::vector<std::pair<std::string, float>> timeLogSplay;
     public:
-        std::vector<float> getTimePerInsertion(){
+      /*
+        std::vector<float> getTrieTimePerInsertion(){
             for (int i = 0; i < 50; i++){
                 insertionTime.push_back((float) i);
             }
             return insertionTime;
+        }
+        std::vector<float> getSplayTimePerInsertion(){
+            for (int i = 0; i < 50; i++){
+                insertionTime.push_back((float) i);
+            }
+            return insertionTime;
+        }
+       */
+        std::chrono::time_point<std::chrono::system_clock> start, end;
+        void tick() {
+            start = std::chrono::system_clock::now();
+        }
+        void tockTrie(std::string command) {
+            end = std::chrono::system_clock::now();
+            std::chrono::duration<float> elapsed_seconds = end - start;
+            timeLogTrie.push_back({command, elapsed_seconds.count()});
+        }
+        void tockSplay(std::string command) {
+            end = std::chrono::system_clock::now();
+            std::chrono::duration<float> elapsed_seconds = end - start;
+            timeLogSplay.push_back({command, elapsed_seconds.count()});
+        }
+        void writeToFile() {
+            // create a txt file if it doesn't exist already
+            // write each pair of string + float to a line in CSV format
+            // will it be sorted? i dunno lmao
+            // Assuming path will always be to graph_data.js
+
+            // The graph within the HTML file uses Chart.js
+            // To send c++ data to JavaScript code, we can parse the data as a JS variable
+            // This piece of code writes a set of strings and creates a JS file
+            // When complete, this JS file is read as a variable within dataGraph.html
+            std::string TrieGraphX = "var TrieGraphX = [";
+            std::string TrieGraphY = "var TrieGraphY = [";
+            std::string SplayGraphX = "var SplayGraphX = [";
+            std::string SplayGraphY = "var SplayGraphY = [";
+            std::string ender = "];";
+
+
         }
     };
 };

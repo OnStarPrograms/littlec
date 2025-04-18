@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Graph Representation</title>
+    <script src="graph_data.js" type="text/javascript"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link rel="stylesheet" href="dataGraph.css">
+</head>
+<body>
+    <h1>
+        Data Graph Representation of Each Operations' Memory
+    </h1>
+    <h2>Project 3 Submission by Aiden Thomas, Stepan Pechenkin, and Grecia Ocando</h2>
+    <hr>
+    <canvas id="graph_chart" style="width:100%; max-width:700px">
+
+    </canvas>
+
+<script>
+    // fuuuuck I hate NO idea how to write in js
+    const xValues = graphX;
+    const yValues = graphY;
+    const barColors = ["red", "green","blue","orange","brown"];
+
+    new Chart("graph_chart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: {display: false},
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+
+            title: {
+                display: true,
+                text: "World Wine Production 2018"
+            }
+        }
+    });
+</script>
+
+</body>
+
+</html>

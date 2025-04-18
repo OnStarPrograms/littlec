@@ -30,9 +30,9 @@ int main(){
     test.create_int("height", 5);
     test.compare("i", "height", '<');
     test.start_while();
-        test.compare("i", "height", '<');
         test.print_var("i");
         test.increment("i");
+        test.compare("i", "height", '<');
     test.end_while();
 
     test.print_var("first_int");

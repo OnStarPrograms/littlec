@@ -272,22 +272,47 @@ namespace util{
             timeLogSplay.push_back({command, elapsed_seconds.count()});
         }
         void writeToFile() {
-            // create a txt file if it doesn't exist already
-            // write each pair of string + float to a line in CSV format
-            // will it be sorted? i dunno lmao
-            // Assuming path will always be to graph_data.js
-
             // The graph within the HTML file uses Chart.js
+            // Issue: JS is stubborn about importing external data for safety reasons
             // To send c++ data to JavaScript code, we can parse the data as a JS variable
-            // This piece of code writes a set of strings and creates a JS file
+            // This piece of code writes a set of strings and creates a JS file using the class variables
             // When complete, this JS file is read as a variable within dataGraph.html
             std::string TrieGraphX = "var TrieGraphX = [";
             std::string TrieGraphY = "var TrieGraphY = [";
             std::string SplayGraphX = "var SplayGraphX = [";
             std::string SplayGraphY = "var SplayGraphY = [";
-            std::string ender = "];";
+            std::string ender = "];\n";
 
+            for (auto entry: timeLogTrie) {
+                TrieGraphX = TrieGraphX + "\"" + timeLogTrie[entry].first + "\",";
+                TrieGraphY = TrieGraphY + to_string(timeLogTrie[entry].second) + ",";
+            }
+            TrieGraphX.pop_back();
+            TrieGraphY.pop_back();
+            TrieGraphX += ender;
+            TrieGraphY += ender;
 
+            for(auto entry: timeLogSplay) {
+                SplayGraphX = SplayGraphX + "\"" + timeLogSplay[entry].first + "\",";
+                SplayGraphY = SplayGraphY + to_string(timeLogSplay[entry].second) + ",";
+            }
+            SplayGraphX.pop_back();
+            SplayGraphY.pop_back();
+            SplayGraphX += ender;
+            SplayGraphY += ender;
+
+            std::fstream os;
+            os.open("./graph_data.txt", ios::trunc | ios::out);
+            if (!os) {
+                std::cerr << "Error opening graph_data.js" << std::endl;
+                return -1;
+            }
+            os << TrieGraphX;
+            os << TrieGraphY;
+            os << SplayGraphX;
+            os << SplayGraphY;
+
+            os.close();
         }
     };
 };

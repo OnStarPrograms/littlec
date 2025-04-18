@@ -25,7 +25,7 @@ int main(){
     test.start_if();
         test.print_var("fourth_int");
     test.end_if();
-    
+
     test.create_int("i", 0);
     test.create_int("height", 5);
     test.compare("i", "height", '<');

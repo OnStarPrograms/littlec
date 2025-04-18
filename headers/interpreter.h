@@ -1,4 +1,5 @@
 #include "scope.h"
+#include <fstream>
 #include <iostream>
 
 class interpreter : public scope {
@@ -10,6 +11,20 @@ class interpreter : public scope {
         instructions[0].push(new util::queue<std::string>());
         depth = 0;
     };
+
+    void million_word_hell(){
+        std::ifstream my_file("./google-10000-english.txt");
+        if (!my_file.is_open())
+            std::cout << "unable to open file" << std::endl;
+        std::string var_name;
+        std::string value;
+        while(std::getline(my_file, var_name)){
+            std::getline(my_file, value);
+            insert_var(var_name, value);
+        }
+        getData().writeToFile();
+    };
+
     bool create_int(std::string name, int val){
         instructions[depth].peek_tail()->push("var");
         instructions[depth].peek_tail()->push(name);
@@ -132,8 +147,6 @@ class interpreter : public scope {
         return true;
     };
 
-    util::DataTracker million_word_hell();
-    util::DataTracker get_data();
 
     void run_program(){
         int program_depth = 0;

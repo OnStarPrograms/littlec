@@ -19,9 +19,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf20aa09-d7b8-4e4b-bc12-22ba0665c92f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test" beforeDir="false" afterPath="$PROJECT_DIR$/build/test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test.dSYM/Contents/Resources/DWARF/test" beforeDir="false" afterPath="$PROJECT_DIR$/build/test.dSYM/Contents/Resources/DWARF/test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/testLexerAndParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/testLexerAndParser.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +104,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "C/C++ File.testLexerAndParser.cpp.executor": "Run",
+    "C/C++ File.test_interpreter.cpp.executor": "Run",
     "DefaultHtmlFileTemplate": "HTML File",
+    "Makefile Target.Stepan, Don't change this.executor": "Run",
     "Makefile Target.memory.executor": "Run",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -116,7 +116,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
+
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -132,16 +132,35 @@
       <recent name="C:\Users\stepa\OneDrive\Documents\GitHub\littlec\build" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="memory" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="memory" workingDirectory="" arguments="">
+  <component name="RunManager" selected="Makefile Target.Stepan, Don't change this">
+    <configuration name="testLexerAndParser.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="littlec" TARGET_NAME="testLexerAndParser.cpp" CONFIG_NAME="testLexerAndParser.cpp">
+      <option name="sourceFile" value="test\testLexerAndParser.cpp" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test_interpreter.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="littlec" TARGET_NAME="test_interpreter.cpp" CONFIG_NAME="test_interpreter.cpp">
+      <option name="sourceFile" value="test\test_interpreter.cpp" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Stepan, Don't change this" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" activateToolWindowBeforeRun="false" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="interp" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="C/C++ File.test_interpreter.cpp" />
+      <item itemvalue="C/C++ File.testLexerAndParser.cpp" />
+      <item itemvalue="Makefile Target.Stepan, Don't change this" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Makefile Target.memory" />
+        <item itemvalue="Makefile Target.Stepan, Don't change this" />
+        <item itemvalue="C/C++ File.testLexerAndParser.cpp" />
+        <item itemvalue="C/C++ File.test_interpreter.cpp" />
       </list>
     </recent_temporary>
   </component>

@@ -6,6 +6,7 @@
 
 int main() {
     interpreter test;
+
     std::string input;
     std::cin >> input;
     if(input.find("million") != std::string::npos) {

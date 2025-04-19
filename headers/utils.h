@@ -2,6 +2,8 @@
 #include <vector>
 #include <chrono>
 #include <fstream>
+#include <iostream>
+
 /*
  * util::
  *  LinkedList
@@ -241,8 +243,8 @@ namespace util{
     // no idea how I'm gonna test if this works lmao
 // no idea how I'm gonna test if this works lmao
     class DataTracker{
-        std::vector<std::pair<std::string, float>> timeLogTrie;
-        std::vector<std::pair<std::string, float>> timeLogSplay;
+        std::vector<std::pair<std::string, int>> timeLogTrie;
+        std::vector<std::pair<std::string, int>> timeLogSplay;
     public:
       /*
         std::vector<float> getTrieTimePerInsertion(){
@@ -258,37 +260,86 @@ namespace util{
             return insertionTime;
         }
        */
-        std::chrono::time_point<std::chrono::system_clock> start, end;
+
+        static DataTracker *instancePtr;
+        int increment = 0;
+
+        // std::chrono::time_point<std::chrono::system_clock> start, end;
+        // using picoseconds = std::chrono::duration<long long, std::pico>;
+
+        static DataTracker *getInstance() {
+            if (instancePtr == nullptr) {
+                instancePtr = new DataTracker();
+                return instancePtr;
+            }
+            else {
+                return instancePtr;
+            }
+        }
         void tick() {
-            start = std::chrono::system_clock::now();
+            // constexpr auto N = 1000;
+            // start = std::chrono::system_clock::now();
+        }
+        void inc() {
+            increment++;
         }
         void tockTrie(std::string command) {
-            end = std::chrono::system_clock::now();
-            std::chrono::duration<float> elapsed_seconds = end - start;
-            timeLogTrie.push_back({command, elapsed_seconds.count()});
+            // end = std::chrono::system_clock::now();
+            // auto elapsed_seconds = picoseconds{start-end}/1000;
+            // timeLogTrie.push_back({command, elapsed_seconds.count()});
+            timeLogTrie.push_back({command, increment});
+            increment = 0;
         }
         void tockSplay(std::string command) {
-            end = std::chrono::system_clock::now();
-            std::chrono::duration<float> elapsed_seconds = end - start;
-            timeLogSplay.push_back({command, elapsed_seconds.count()});
+            //end = std::chrono::system_clock::now();
+            // auto elapsed_seconds = picoseconds{start-end}/1000;
+            // timeLogSplay.push_back({command, elapsed_seconds.count()});
+            timeLogSplay.push_back({command, increment});
+            increment = 0;
         }
-        void writeToFile() {
-            // create a txt file if it doesn't exist already
-            // write each pair of string + float to a line in CSV format
-            // will it be sorted? i dunno lmao
-            // Assuming path will always be to graph_data.js
 
+        void writeToFile() {
             // The graph within the HTML file uses Chart.js
+            // Issue: JS is stubborn about importing external data for safety reasons
             // To send c++ data to JavaScript code, we can parse the data as a JS variable
-            // This piece of code writes a set of strings and creates a JS file
+            // This piece of code writes a set of strings and creates a JS file using the class variables
             // When complete, this JS file is read as a variable within dataGraph.html
             std::string TrieGraphX = "var TrieGraphX = [";
             std::string TrieGraphY = "var TrieGraphY = [";
             std::string SplayGraphX = "var SplayGraphX = [";
             std::string SplayGraphY = "var SplayGraphY = [";
-            std::string ender = "];";
+            std::string ender = "];\n";
 
+            for (auto entry: timeLogTrie) {
+                TrieGraphX = TrieGraphX + "\"" + entry.first + "\",";
+                TrieGraphY = TrieGraphY + std::to_string(entry.second) + ",";
+            }
+            TrieGraphX.pop_back();
+            TrieGraphY.pop_back();
+            TrieGraphX += ender;
+            TrieGraphY += ender;
 
+            for(auto entry: timeLogSplay) {
+                SplayGraphX = SplayGraphX + "\"" + entry.first + "\",";
+                SplayGraphY = SplayGraphY + std::to_string(entry.second) + ",";
+            }
+            SplayGraphX.pop_back();
+            SplayGraphY.pop_back();
+            SplayGraphX += ender;
+            SplayGraphY += ender;
+
+            std::fstream os;
+            os.open("./graph_data.js", std::ios::trunc | std::ios::out);
+            if (!os) {
+                std::cerr << "Error opening graph_data.js" << std::endl;
+            }
+
+            os << TrieGraphX;
+            os << TrieGraphY;
+            os << SplayGraphX;
+            os << SplayGraphY;
+
+            os.close();
         }
     };
 };

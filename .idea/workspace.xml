@@ -19,18 +19,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf20aa09-d7b8-4e4b-bc12-22ba0665c92f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/autoPush.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/test.dSYM/Contents/Resources/Relocations/x86_64/test.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/headers/lexer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/headers/parser.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lexer.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/parser.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/testLexerAndParser.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test" beforeDir="false" afterPath="$PROJECT_DIR$/build/test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test.dSYM/Contents/Resources/DWARF/test" beforeDir="false" afterPath="$PROJECT_DIR$/build/test.dSYM/Contents/Resources/DWARF/test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_interpreter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_interpreter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testLexerAndParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/testLexerAndParser.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +116,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "lexing__more",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

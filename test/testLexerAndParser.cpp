@@ -5,8 +5,8 @@
 #include <string>
 
 int main() {
-    //interpreter test;
-    //test.million_word_hell();
+    interpreter test;
+//    test.million_word_hell();
     std::cout << "Enter LittleC code (type end; to execute):\n";
 
     std::stringstream buffer;

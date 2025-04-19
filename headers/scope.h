@@ -5,7 +5,7 @@ class scope{
     std::vector<TrieMemory> tries_scope; 
     std::vector<SplayMemory> splays_scope; 
     int scopelevel;
-    util::DataTracker* tracker;
+    util::DataTracker tracker;
 
   public:
     scope();

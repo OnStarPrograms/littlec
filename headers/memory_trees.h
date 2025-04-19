@@ -97,7 +97,7 @@ class TrieMemory{
 
 class SplayMemory{
     node* head;
-    util::DataTracker* track;
+    util::DataTracker track;
 
   public:
     SplayMemory(){

@@ -134,7 +134,7 @@ node* TrieMemory::find_node(std::string var_name, int& i){
             break;
         }
         i++;
-        track->inc();
+        track.inc();
     }
     return temp;
 }
@@ -201,7 +201,7 @@ node* SplayMemory::find_node(std::string name){
         else{
             break;
         }
-        track->inc();
+        track.inc();
     }
     return temp;
 }

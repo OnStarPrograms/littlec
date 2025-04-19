@@ -261,21 +261,16 @@ namespace util{
         }
        */
 
-        static DataTracker *instancePtr;
+
         int increment = 0;
 
         // std::chrono::time_point<std::chrono::system_clock> start, end;
         // using picoseconds = std::chrono::duration<long long, std::pico>;
 
-        static DataTracker *getInstance() {
-            if (instancePtr == nullptr) {
-                instancePtr = new DataTracker();
-                return instancePtr;
-            }
-            else {
-                return instancePtr;
-            }
-        }
+        static DataTracker &getInstance() {
+            static DataTracker mine;
+            return mine;
+        };
         void tick() {
             // constexpr auto N = 1000;
             // start = std::chrono::system_clock::now();

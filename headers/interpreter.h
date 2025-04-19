@@ -1,6 +1,7 @@
 #include "scope.h"
 #include <fstream>
 #include <iostream>
+#pragma once
 
 class interpreter : public scope {
     std::vector<util::dequeue<util::queue<std::string>*>> instructions;
@@ -22,7 +23,7 @@ class interpreter : public scope {
             std::getline(my_file, value);
             insert_var(var_name, value);
         }
-        getData();
+        getData().writeToFile();
     };
 
     bool create_int(std::string name, int val){
@@ -261,6 +262,6 @@ class interpreter : public scope {
             prev_commands.clear();
 
         }
-        getData();
+        getData().writeToFile();
     };
 };

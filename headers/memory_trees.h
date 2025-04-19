@@ -1,6 +1,7 @@
 #include "utils.h"
 #include <stdlib.h>
 #include <string>
+#pragma once
 
 struct node{
     util::type_wrapper data;
@@ -47,7 +48,7 @@ struct node{
 
 class TrieMemory{
     node* head;
-    util::DataTracker *track;
+    util::DataTracker track;
 
   public:
     TrieMemory(){

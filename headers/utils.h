@@ -3,6 +3,8 @@
 #include <chrono>
 #include <fstream>
 #include <iostream>
+#pragma once
+
 
 /*
  * util::
@@ -242,10 +244,12 @@ namespace util{
 
     // no idea how I'm gonna test if this works lmao
 // no idea how I'm gonna test if this works lmao
+
     class DataTracker{
         std::vector<std::pair<std::string, int>> timeLogTrie;
         std::vector<std::pair<std::string, int>> timeLogSplay;
     public:
+        inline static int increment;
       /*
         std::vector<float> getTrieTimePerInsertion(){
             for (int i = 0; i < 50; i++){
@@ -262,7 +266,7 @@ namespace util{
        */
 
 
-        int increment = 0;
+
 
         // std::chrono::time_point<std::chrono::system_clock> start, end;
         // using picoseconds = std::chrono::duration<long long, std::pico>;
@@ -337,4 +341,5 @@ namespace util{
             os.close();
         }
     };
+    int DataTracker::increment = 1;
 };

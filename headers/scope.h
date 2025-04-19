@@ -1,5 +1,6 @@
 #include "memory_trees.h"
 #include <functional>
+#pragma once
 
 class scope{
     std::vector<TrieMemory> tries_scope; 
@@ -13,7 +14,7 @@ class scope{
     void enter_scope();
     bool leave_scope();
     bool insert_var(std::string name, util::type_wrapper variable);
-    void getData();
+    util::DataTracker getData();
     util::type_wrapper get_var(std::string name);
     void print_var(std::string name);
 

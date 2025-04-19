@@ -22,7 +22,7 @@ class interpreter : public scope {
             std::getline(my_file, value);
             insert_var(var_name, value);
         }
-        getData().writeToFile();
+        getData();
     };
 
     bool create_int(std::string name, int val){
@@ -261,6 +261,6 @@ class interpreter : public scope {
             prev_commands.clear();
 
         }
-        getData().writeToFile();
+        getData();
     };
 };

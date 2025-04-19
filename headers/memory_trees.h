@@ -47,10 +47,12 @@ struct node{
 
 class TrieMemory{
     node* head;
+    util::DataTracker *track;
 
   public:
     TrieMemory(){
         head = nullptr; 
+        track = util::DataTracker::getInstance();
     }
     ~TrieMemory(){
 //        if (head == nullptr)

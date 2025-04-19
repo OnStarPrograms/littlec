@@ -134,6 +134,7 @@ node* TrieMemory::find_node(std::string var_name, int& i){
             break;
         }
         i++;
+        track->inc();
     }
     return temp;
 }

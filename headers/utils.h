@@ -239,6 +239,7 @@ namespace util{
     };
 
     // no idea how I'm gonna test if this works lmao
+// no idea how I'm gonna test if this works lmao
     class DataTracker{
         std::vector<std::pair<std::string, float>> timeLogTrie;
         std::vector<std::pair<std::string, float>> timeLogSplay;

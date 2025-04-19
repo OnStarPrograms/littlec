@@ -97,10 +97,12 @@ class TrieMemory{
 
 class SplayMemory{
     node* head;
+    util::DataTracker* track;
 
   public:
     SplayMemory(){
         head = nullptr;
+        track = util::DataTracker::getInstance();
     }
     ~SplayMemory(){
 //        delete_node(head);

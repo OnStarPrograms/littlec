@@ -201,6 +201,7 @@ node* SplayMemory::find_node(std::string name){
         else{
             break;
         }
+        track->inc();
     }
     return temp;
 }

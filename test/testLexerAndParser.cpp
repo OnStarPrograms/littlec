@@ -6,9 +6,14 @@
 
 int main() {
     interpreter test;
-//    test.million_word_hell();
-    std::cout << "Enter LittleC code (type end; to execute):\n";
 
+    std::string input;
+    std::cin >> input;
+    if(input.find("million") != std::string::npos) {
+        test.million_word_hell();
+        return 0;
+    }
+    std::cout << "Enter LittleC code (type end; to execute):\n";
     std::stringstream buffer;
     std::string line;
 

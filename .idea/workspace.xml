@@ -19,11 +19,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf20aa09-d7b8-4e4b-bc12-22ba0665c92f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/graph_data.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graph_data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test.exe" beforeDir="false" afterPath="$PROJECT_DIR$/build/test.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/utils.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/testLexerAndParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/testLexerAndParser.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,8 +116,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "timekeeper",
-    "last_opened_file_path": "C:/Users/stepa/OneDrive/Documents/GitHub/littlec",
+
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

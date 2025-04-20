@@ -8,7 +8,6 @@
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
     <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated />
@@ -20,15 +19,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf20aa09-d7b8-4e4b-bc12-22ba0665c92f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/build/test" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graph_data.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test_tick_tock.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1MillionWords.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test" beforeDir="false" afterPath="$PROJECT_DIR$/build/test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test.dSYM/Contents/Resources/DWARF/test" beforeDir="false" afterPath="$PROJECT_DIR$/build/test.dSYM/Contents/Resources/DWARF/test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/memory_trees.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/memory_trees.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/utils.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph_data.js" beforeDir="false" afterPath="$PROJECT_DIR$/graph_data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/interpreter.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/interpreter.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/memory_trees.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/memory_trees.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scope.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scope.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test_interpreter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_interpreter.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,44 +65,6 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -400,7 +359,8 @@
       <workItem from="1744920882030" duration="3000" />
       <workItem from="1744990112386" duration="9090000" />
       <workItem from="1745026311091" duration="1123000" />
-      <workItem from="1745115572249" duration="2055000" />
+      <workItem from="1745115572249" duration="2154000" />
+      <workItem from="1745161829561" duration="427000" />
     </task>
     <servers />
   </component>
@@ -429,9 +389,9 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/scope.cpp</url>
-          <line>81</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/memory_trees.cpp</url>
+          <line>141</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -7,23 +7,23 @@ int main(){
     test.create_int("first_int", 5);
     test.create_int("second_int", 4);
     test.create_int("third_int", 3);
-    test.create_int("fourth_int", 3);
-    // test.create_int("fourth_int", 2);
-    test.create_string("fifth_int", "helloworld");
+    test.create_int("fourthint", 3);
+    test.create_int("fourthint", 2);
+    test.create_string("fifthint", "helloworld");
     
-    test.create_int("fou_int", 2);
-    test.create_char("fif_int", '2');
-    test.compare("fou_int", "fif_int", '~');
+    test.create_int("fouint", 2);
+    test.create_char("fifint", '2');
+    test.compare("fouint", "fifint", '~');
 
 
-    test.compare("fourth_int", "third_int", '~');
+    test.compare("fourthint", "third_int", '~');
     test.start_if();
         test.print_var("second_int");
     test.end_if();
     
     test.compare("first_int", "third_int", '~');
     test.start_if();
-        test.print_var("fourth_int");
+        test.print_var("fourthint");
     test.end_if();
 
     test.create_int("i", 0);
@@ -36,7 +36,7 @@ int main(){
     test.end_while();
 
     test.print_var("first_int");
-    test.print_var("fifth_int");
+    test.print_var("fifthint");
     test.run_program();
     return 0;
 }

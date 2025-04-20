@@ -14,7 +14,7 @@ class interpreter : public scope {
     };
 
     void million_word_hell(){
-        std::ifstream my_file("./google-10000-english.txt");
+        std::ifstream my_file("./1MillionWords.txt");
         if (!my_file.is_open())
             std::cout << "unable to open file" << std::endl;
         std::string var_name;

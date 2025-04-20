@@ -76,6 +76,9 @@ bool TrieMemory::insert(std::string var_name, void* data, int size){
     int i = 0;
     node* temp = find_node(var_name, i);
 
+    if (temp->name == var_name){
+        return false;
+    }
 
     track.tockTrie("insert");
     return insert_helper(var_name, i, data, size, temp);
@@ -99,7 +102,11 @@ bool TrieMemory::insert(std::string var_name, util::type_wrapper data){
     int i = 0;
     node* temp = find_node(var_name, i);
 
+
     track.tockTrie("insert");
+    if (temp->name == var_name){
+        return false;
+    }
     return insert_helper(var_name, i, data.val, data.size, temp);
 }
 
@@ -268,7 +275,6 @@ void SplayMemory::insert(std::string name, util::type_wrapper data){
         temp->top = found;
     }
     else{
-        delete temp;
         return;
     }
     node_count++;

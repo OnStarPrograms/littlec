@@ -13,18 +13,18 @@ make lexer
 > Denoted with a 'end;'
 
 ## Comparators
-> '~' -> equal to
-> '|' -> not equal to
-> '>' -> greater than
-> '<' -> less than
+> '~' -> equal to  
+> '|' -> not equal to  
+> '>' -> greater than  
+> '<' -> less than  
 
 ## operators
-> '*' -> multiply
-> '/' -> divide
-> '+' -> add
-> '-' -> subtract
-> '{var_name}++' -> increment
-> '{var_name}--' -> decrement
+> '*' -> multiply  
+> '/' -> divide  
+> '+' -> add  
+> '-' -> subtract  
+> '{var_name}++' -> increment  
+> '{var_name}--' -> decrement  
   
 
 ## var Declarations

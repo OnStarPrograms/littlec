@@ -8,6 +8,7 @@ int main() {
     interpreter test;
 
     std::string input;
+    std::cout << "Input {million} or {interpreter} to start!" << std::endl;
     std::cin >> input;
     if(input.find("million") != std::string::npos) {
         test.million_word_hell();

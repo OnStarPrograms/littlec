@@ -1,6 +1,10 @@
 #include "scope.h"
 #include <fstream>
 #include <iostream>
+#include <set>
+
+
+#include <algorithm>
 #pragma once
 
 class interpreter : public scope {
@@ -14,14 +18,25 @@ class interpreter : public scope {
     };
 
     void million_word_hell(){
-        std::ifstream my_file("./1MillionWords.txt");
+        std::ifstream my_file("./wiki-100k.txt");
         if (!my_file.is_open())
             std::cout << "unable to open file" << std::endl;
         std::string var_name;
         std::string value;
         while(std::getline(my_file, var_name)){
             std::getline(my_file, value);
-            insert_var(var_name, value);
+            std::transform(var_name.begin(), var_name.end(), var_name.begin(), ::tolower);
+            if (var_name.find("#!comment") == std::string::npos && var_name.find("'") == std::string::npos){
+                bool flag = true;
+                for (char i:var_name){
+                    if (i < 'a' || i > 'z'){
+                        flag = false;
+                    }
+                }
+                if (flag == true){
+                 insert_var(var_name, value);
+                }
+            }
         }
         getData().writeToFile();
     };

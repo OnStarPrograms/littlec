@@ -13,10 +13,11 @@
         Data Graph Representation of Each Operations' Memory
     </h1>
     <h2>Project 3 Submission by Aiden Thomas, Stepan Pechenkin, and Grecia Ocando</h2>
+    <p>GitHub Link: <a href="https://github.com/OnStarPrograms/littlec" style="color:#ff00ab">https://github.com/OnStarPrograms/littlec</a></p>
     <hr>
-    <div style="display:inline-block; width:100%">
-        <canvas id="trie_graph" style="width:40%; max-width:600px"></canvas>
-        <canvas id="splay_graph" style="width:40%; max-width:600px"></canvas>
+    <div style="display:flex; width:100%">
+        <canvas id="trie_graph" style="width:38%; padding-left:10%; padding-right:2%; padding-top:2%; max-width:600px"></canvas>
+        <canvas id="splay_graph" style="width:38%; padding-right:10%; padding-left:2%; padding-top:2%; max-width:600px;"></canvas>
     </div>
 
 
@@ -26,19 +27,23 @@
     const TrieYValues = TrieGraphY;
     const SplayXValues = SplayGraphX;
     const SplayYValues = SplayGraphY;
+    const TrieSize = TrieGraphY.length;
+    const SplaySize = SplayGraphY.length;
     const barColors = ["red", "green","blue","orange","brown"];
 
     new Chart("trie_graph", {
-        type: "bar",
+        type: "horizontalBar",
         data: {
             labels: TrieXValues,
             datasets: [{
                 backgroundColor: "red",
-                data: TrieYValues
-            }]
+                data: TrieYValues,
+            }],
         },
         options: {
             legend: {display: false},
+            // maintainAspectRatio : false,
+
             scales: {
                 yAxes: [{
                     ticks: {
@@ -55,7 +60,7 @@
     });
 
     new Chart("splay_graph", {
-        type: "bar",
+        type: "horizontalBar",
         data: {
             labels: SplayXValues,
             datasets: [{
@@ -65,6 +70,8 @@
         },
         options: {
             legend: {display: false},
+            //maintainAspectRatio: false,
+            //height: 20* SplaySize,
             scales: {
                 yAxes: [{
                     ticks: {

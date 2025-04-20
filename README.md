@@ -1,22 +1,91 @@
 # littlec
 
-## LinkedList Class (ll.h, "LL")
-### Main memory controller :: O(n)
-//Info
-### Functions
+## building the program.
+```bash
+make lexer
+```
 
-##### long int insertData(int data)
-    - Inserts Data to the Main Memory Controller
-    - Returns the ID that is associated to the data (long int)
-    - If you would like to manually change the memory
-        > Reinterpret the ID as a (ptr)
+## Test the Data Set.
+```bash
+make million
+```
 
-##### bool removeData(long int ID)
-    - Removes the Data associated to the ID
-    - returns if it was successful
+## million
+> Runs the 100,000 word Data set
 
-##### int* find(long int ID)
-    - Returns the Pointer to the stored Data associated to the ID
-    - returns `nullptr` if the ID is invalid.
+## end
+> End the program  
+> Denoted with a 'end;'
 
-#### ONLY USE THE GIVEN FUNCTIONS
+## Comparators
+> '~' -> equal to  
+> '|' -> not equal to  
+> '>' -> greater than  
+> '<' -> less than  
+
+## operators
+> '*' -> multiply  
+> '/' -> divide  
+> '+' -> add  
+> '-' -> subtract  
+> '{var_name}++' -> increment  
+> '{var_name}--' -> decrement  
+  
+
+## var Declarations
+> 'int {var_name} = {var_data};'  
+>     - creates a new integer variable  
+> 'char {var_name} = '{var_data}';'  
+>     - creates a new character variable  
+> 'string {var_name} = "{var_data}";'  
+>     - creates a new string variable  
+
+
+## while
+> 'while {var} {comp} {second_var} {'  
+>     - compares the {var} with {second_var} using the {comp} comparator.  
+>     - Will execute code in the while loop aslong as the comparator is returning __true__  
+  
+## If
+> 'if {var} {comp} {second_var} {'  
+>     - compares the {var} with {second_var} using the {comp} comparator.  
+>     - Will execute code in the i loop if the comparator is returning __true__  
+
+# print
+> 'print {var}'  
+>     - Prints the variables data.  
+
+# The interpreter will tell you if there is a syntax error.  
+
+## If Statement Example
+```c++
+int x = 1;
+int y = 2;
+if x < y {
+    print x;
+}
+end;
+
+
+int a = 3;
+int b = 3;
+int c = 2;
+if a ~ b {
+    print a;
+    if c < b {
+        print b;
+    }
+}
+end;
+```
+
+## While Loop Statement Example
+```c++
+int x = 3;
+int y = 5;
+while x < y {
+    print x;
+    x++;
+}
+end;
+```

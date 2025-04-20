@@ -9,7 +9,7 @@ make lexer
 > Runs the 100,000 word Data set
 
 ## end
-> End the program
+> End the program  
 > Denoted with a 'end;'
 
 ## Comparators
@@ -28,29 +28,29 @@ make lexer
   
 
 ## var Declarations
-> 'int {var_name} = {var_data};'
->     - creates a new integer variable
-> 'char {var_name} = '{var_data}';'
->     - creates a new character variable
-> 'string {var_name} = "{var_data}";'
->     - creates a new string variable
+> 'int {var_name} = {var_data};'  
+>     - creates a new integer variable  
+> 'char {var_name} = '{var_data}';'  
+>     - creates a new character variable  
+> 'string {var_name} = "{var_data}";'  
+>     - creates a new string variable  
 
 
 ## while
-> 'while {var} {comp} {second_var} {'
->     - compares the {var} with {second_var} using the {comp} comparator.
->     - Will execute code in the while loop aslong as the comparator is returning __true__
-
+> 'while {var} {comp} {second_var} {'  
+>     - compares the {var} with {second_var} using the {comp} comparator.  
+>     - Will execute code in the while loop aslong as the comparator is returning __true__  
+  
 ## If
-> 'if {var} {comp} {second_var} {'
->     - compares the {var} with {second_var} using the {comp} comparator.
->     - Will execute code in the i loop if the comparator is returning __true__
+> 'if {var} {comp} {second_var} {'  
+>     - compares the {var} with {second_var} using the {comp} comparator.  
+>     - Will execute code in the i loop if the comparator is returning __true__  
 
 # print
-> 'print {var}'
->     - Prints the variables data.
+> 'print {var}'  
+>     - Prints the variables data.  
 
-# The iterpreter will tell you if there is a syntax error.
+# The iterpreter will tell you if there is a syntax error.  
 
 ```c++[example if code]
 int x = 1;

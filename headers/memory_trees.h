@@ -51,9 +51,9 @@ class TrieMemory{
     util::DataTracker track;
 
   public:
-    TrieMemory(){
+    TrieMemory(util::DataTracker& tracker){
         head = nullptr; 
-        track = util::DataTracker::getInstance();
+        track = tracker; 
     }
     ~TrieMemory(){
 //        if (head == nullptr)
@@ -73,6 +73,12 @@ class TrieMemory{
     void delete_node(node* value);
     util::type_wrapper find(std::string);
     node* find_node(std::string var_name, int& i);
+    util::DataTracker getData(){
+        return track;
+    }
+    void clear_tick(){
+        track.increment = 0;
+    }
     
 
     bool operate(std::string one, std::string two, char op);
@@ -99,14 +105,18 @@ class TrieMemory{
 class SplayMemory{
     node* head;
     util::DataTracker track;
+    int node_count = 0;
 
   public:
-    SplayMemory(){
+    SplayMemory(util::DataTracker& tracker){
         head = nullptr;
-        track = util::DataTracker::getInstance();
+        track = tracker;
     }
     ~SplayMemory(){
 //        delete_node(head);
+    }
+    util::DataTracker getData(){
+        return track;
     }
     void zig(node* temp);
     void zag(node* temp);

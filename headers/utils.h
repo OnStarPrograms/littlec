@@ -1,4 +1,5 @@
 #include <string>
+#include <map>
 #include <vector>
 #include <chrono>
 #include <fstream>
@@ -249,7 +250,7 @@ namespace util{
         std::vector<std::pair<std::string, int>> timeLogTrie;
         std::vector<std::pair<std::string, int>> timeLogSplay;
     public:
-        inline static int increment;
+        int increment=0;
       /*
         std::vector<float> getTrieTimePerInsertion(){
             for (int i = 0; i < 50; i++){
@@ -296,6 +297,10 @@ namespace util{
             timeLogSplay.push_back({command, increment});
             increment = 0;
         }
+        void update(DataTracker right){
+            timeLogTrie.insert(timeLogTrie.end(), right.timeLogTrie.begin(), right.timeLogTrie.end()); 
+            timeLogSplay.insert(timeLogSplay.end(), right.timeLogSplay.begin(), right.timeLogSplay.end()); 
+        }
 
         void writeToFile() {
             // The graph within the HTML file uses Chart.js
@@ -309,8 +314,15 @@ namespace util{
             std::string SplayGraphY = "var SplayGraphY = [";
             std::string ender = "];\n";
 
+
+            std::map<std::string, int> operand; 
             for (auto entry: timeLogTrie) {
-                TrieGraphX = TrieGraphX + "\"" + entry.first + "\",";
+                if (operand.count(entry.first)==0){
+                    operand[entry.first] = 0;
+                }
+                
+                operand[entry.first] += 1;
+                TrieGraphX = TrieGraphX + "\"" + "operation " + std::to_string(operand[entry.first]) + " " + entry.first + "\",";
                 TrieGraphY = TrieGraphY + std::to_string(entry.second) + ",";
             }
             TrieGraphX.pop_back();
@@ -318,8 +330,16 @@ namespace util{
             TrieGraphX += ender;
             TrieGraphY += ender;
 
+            std::map<std::string, int> operand_2; 
+
             for(auto entry: timeLogSplay) {
-                SplayGraphX = SplayGraphX + "\"" + entry.first + "\",";
+                if (operand_2.count(entry.first)==0){
+                    operand_2[entry.first] = 0;
+                }
+                
+                operand_2[entry.first] += 1;
+
+                SplayGraphX = SplayGraphX + "\"" + "operation " + std::to_string(operand_2[entry.first]) + " " + entry.first + "\",";
                 SplayGraphY = SplayGraphY + std::to_string(entry.second) + ",";
             }
             SplayGraphX.pop_back();
@@ -327,7 +347,9 @@ namespace util{
             SplayGraphX += ender;
             SplayGraphY += ender;
 
-            std::fstream os;
+
+
+             std::fstream os;
             os.open("./graph_data.js", std::ios::trunc | std::ios::out);
             if (!os) {
                 std::cerr << "Error opening graph_data.js" << std::endl;
@@ -335,11 +357,11 @@ namespace util{
 
             os << TrieGraphX;
             os << TrieGraphY;
+
             os << SplayGraphX;
             os << SplayGraphY;
 
-            os.close();
+
         }
     };
-    int DataTracker::increment = 1;
 };

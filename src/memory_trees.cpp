@@ -1,4 +1,5 @@
 #include "../headers/memory_trees.h"
+#include <math.h>
 
 
 void operations(node* first, node* second, char op){
@@ -74,6 +75,9 @@ bool TrieMemory::insert(std::string var_name, void* data, int size){
     }
     int i = 0;
     node* temp = find_node(var_name, i);
+
+
+    track.tockTrie("insert");
     return insert_helper(var_name, i, data, size, temp);
 }
 
@@ -83,6 +87,7 @@ bool TrieMemory::operate(std::string one, std::string two, char op){
     i = 0;
     node* second_node = find_node(two, i);
     operations(first_node, second_node, op);
+    track.tockTrie("operate");
     return true;
 }
 
@@ -93,6 +98,8 @@ bool TrieMemory::insert(std::string var_name, util::type_wrapper data){
     }
     int i = 0;
     node* temp = find_node(var_name, i);
+
+    track.tockTrie("insert");
     return insert_helper(var_name, i, data.val, data.size, temp);
 }
 
@@ -203,6 +210,8 @@ node* SplayMemory::find_node(std::string name){
         }
         track.inc();
     }
+    for (int i = 0; i < log2(node_count); i++)
+        track.inc();
     return temp;
 }
 
@@ -262,6 +271,8 @@ void SplayMemory::insert(std::string name, util::type_wrapper data){
         delete temp;
         return;
     }
+    node_count++;
+    track.tockSplay("insert");
     splay(temp);
 };
 
@@ -277,4 +288,5 @@ void SplayMemory::operate(std::string one, std::string two, char op){
     node* first_node = find_node(one);
     node* second_node = find_node(two);
     operations(first_node, second_node, op);
+    track.tockSplay("operate");
 }

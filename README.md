@@ -50,9 +50,10 @@ make lexer
 > 'print {var}'  
 >     - Prints the variables data.  
 
-# The iterpreter will tell you if there is a syntax error.  
+# The interpreter will tell you if there is a syntax error.  
 
-```c++[example if code]
+## If Statement Example
+```c++
 int x = 1;
 int y = 2;
 if x < y {
@@ -72,7 +73,9 @@ if a ~ b {
 }
 end;
 ```
-```c++[example while loop]
+
+## While Loop Statement Example
+```c++
 int x = 3;
 int y = 5;
 while x < y {

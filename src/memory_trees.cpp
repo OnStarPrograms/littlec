@@ -217,9 +217,7 @@ node* SplayMemory::find_node(std::string name){
         }
         track.inc();
     }
-    for (int i = 0; i < log2(node_count); i++)
-        track.inc();
-    return temp;
+        return temp;
 }
 
 

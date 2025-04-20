@@ -1,8 +1,13 @@
 # littlec
 
 ## building the program.
-```bash [to build]
+```bash
 make lexer
+```
+
+## Test the Data Set.
+```bash
+make million
 ```
 
 ## million

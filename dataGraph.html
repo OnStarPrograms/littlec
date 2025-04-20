@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Data Graph Representation</title>
-    <script src="graph_data.js" type="text/javascript"></script>
+    <script src="./graph_data.js" type="text/javascript"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link rel="stylesheet" href="dataGraph.css">
@@ -19,6 +19,15 @@
         <canvas id="trie_graph" style="width:38%; padding-left:10%; padding-right:2%; padding-top:2%; max-width:600px"></canvas>
         <canvas id="splay_graph" style="width:38%; padding-right:10%; padding-left:2%; padding-top:2%; max-width:600px;"></canvas>
     </div>
+    <div>
+        <p style="padding:3% 5% 3% 5%">
+            The graphs above show how many levels had to be travelled in order to reach their intended place in
+            each respective tree during each operation. A large dataset (1000-10000 items) shows the overall efficiency of each tree type.<br><br>
+            As you can (hopefully) see from the graphs above, the trees work in logarithmic time.
+            The current implementation of the Trie tree seems to be more efficient in storing data overall, but has
+            points in which it may spike in inefficiency. The Splay tree is less efficient, but is overall more consistent.
+        </p>
+    </div>
 
 
 <script>
@@ -31,8 +40,28 @@
     const SplaySize = SplayGraphY.length;
     const barColors = ["red", "green","blue","orange","brown"];
 
+    function indexOfMax(arr) {
+        if (arr.length === 0) {
+            return -1;
+        }
+
+        var max = arr[0];
+        var maxIndex = 0;
+
+        for (var i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                maxIndex = i;
+                max = arr[i];
+            }
+        }
+
+        return maxIndex;
+    }
+
+    //const trieMax =
+
     new Chart("trie_graph", {
-        type: "horizontalBar",
+        type: "bar",
         data: {
             labels: TrieXValues,
             datasets: [{
@@ -42,7 +71,7 @@
         },
         options: {
             legend: {display: false},
-            // maintainAspectRatio : false,
+            maintainAspectRatio : false,
 
             scales: {
                 yAxes: [{
@@ -54,13 +83,13 @@
 
             title: {
                 display: true,
-                text: "Time Elapsed of Trie Memory Methods"
+                text: "Depth Traversed From Trie Memory Operations"
             }
         }
     });
 
     new Chart("splay_graph", {
-        type: "horizontalBar",
+        type: "bar",
         data: {
             labels: SplayXValues,
             datasets: [{
@@ -70,7 +99,7 @@
         },
         options: {
             legend: {display: false},
-            //maintainAspectRatio: false,
+            maintainAspectRatio: false,
             //height: 20* SplaySize,
             scales: {
                 yAxes: [{
@@ -82,7 +111,7 @@
 
             title: {
                 display: true,
-                text: "Time Elapsed of Splay Memory Methods"
+                text: "Depth Traversed From Splay Memory Operations"
             }
         }
     });

@@ -1,7 +1,8 @@
 #include "memory_trees.h"
-#include <functional>
 #pragma once
 
+
+// Scope Manager This controls how the trees behavein the interpreter.
 class scope{
     std::vector<TrieMemory> tries_scope; 
     std::vector<SplayMemory> splays_scope; 

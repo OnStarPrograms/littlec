@@ -2,11 +2,27 @@
 #include <fstream>
 #include <iostream>
 #include <set>
-
-
 #include <algorithm>
-#pragma once
 
+//inherits from scope,
+//
+//Example Code to utilize the interpreter
+//
+/*
+ * _Queue up commands_
+ *   test.create_int("fouint", 2);
+ *   test.create_char("fifint", '2');
+ *   test.compare("fouint", "fifint", '~');
+ *   test.compare("fourthint", "third_int", '~');
+ *   
+ *   test.start_if();
+ *       test.print_var("second_int");
+ *   test.end_if();
+ *
+ * _Run The Queued Commands_
+ *   test.run_program();
+*/
+//
 class interpreter : public scope {
     std::vector<util::dequeue<util::queue<std::string>*>> instructions;
     int depth;
@@ -17,6 +33,7 @@ class interpreter : public scope {
         depth = 0;
     };
 
+    //100,000 Dataset testing suite
     void million_word_hell(){
         std::ifstream my_file("./wiki-100k.txt");
         if (!my_file.is_open())
@@ -40,6 +57,7 @@ class interpreter : public scope {
         }
         getData().writeToFile();
     };
+
 
     bool create_int(std::string name, int val){
         instructions[depth].peek_tail()->push("var");
@@ -164,6 +182,15 @@ class interpreter : public scope {
     };
 
 
+    //Runs the program based on the queued commands
+    //
+    // This program is implemented this way 
+    // to allow for My team members to have an easier time
+    // utilizing the interface
+    //
+    // This results in a stateless machine state.
+    //
+    //
     void run_program(){
         int program_depth = 0;
         util::stack<bool> compare_result;
@@ -245,7 +272,6 @@ class interpreter : public scope {
                     program_depth-=1;
                     leave_scope();
                     while_loop.pop();
-//                    instructions[program_depth].pop_head();
                 }
             }
             else if (inst == "inc"){
@@ -263,13 +289,8 @@ class interpreter : public scope {
                 prev_commands.push_back(name);
                 get_var(name);
             }
-            else if (inst == "rec"){
 
-            }
-            else if (inst == "set"){
-
-            }
-
+            //If we are inside a While loop
             if (while_loop.size() > 0){
                 for (std::string command : prev_commands)
                       instructions[program_depth].peek_head()->push(command);
@@ -277,6 +298,7 @@ class interpreter : public scope {
             prev_commands.clear();
 
         }
+        //Write the given data to the file
         getData().writeToFile();
     };
 };

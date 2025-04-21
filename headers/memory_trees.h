@@ -55,16 +55,7 @@ class TrieMemory{
         head = nullptr; 
         track = tracker; 
     }
-    ~TrieMemory(){
-//        if (head == nullptr)
-//            return;
-//        for (int i = 0; i < 52; i++){
-//            if (head->alphabet[i] != nullptr){
-//                delete_node(head->alphabet[i]);
-//            }
-//        }
-//        delete head;
-    }
+    ~TrieMemory(){   }
     bool insert(std::string var_name, void* data, int size);
     
     bool insert(std::string var_name, util::type_wrapper data);

@@ -65,8 +65,9 @@ if x < y {
     print x;
 }
 end;
-
-
+```
+## Nested If Statement Example
+```c++
 int a = 3;
 int b = 3;
 int c = 2;

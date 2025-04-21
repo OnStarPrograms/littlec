@@ -1,7 +1,7 @@
 #include "../headers/memory_trees.h"
 #include <math.h>
 
-
+//Operations {shared between the Splay and the Trie}
 void operations(node* first, node* second, char op){
     int first_size = first->data.size;
     int second_size = second->data.size;
@@ -63,11 +63,23 @@ void operations(node* first, node* second, char op){
         first->data = util::type_wrapper(first_string);
     }
 
+}
 
-    
+//Trie Implementation below \/
+
+
+bool TrieMemory::operate(std::string one, std::string two, char op){
+    int i = 0;
+    node* first_node = find_node(one, i);
+    i = 0;
+    node* second_node = find_node(two, i);
+    operations(first_node, second_node, op);
+    track.tockTrie("operate");
+    return true;
 }
 
 
+//Insert Functions
 bool TrieMemory::insert(std::string var_name, void* data, int size){
     if (head == nullptr){
         head = new node();
@@ -83,17 +95,6 @@ bool TrieMemory::insert(std::string var_name, void* data, int size){
     track.tockTrie("insert");
     return insert_helper(var_name, i, data, size, temp);
 }
-
-bool TrieMemory::operate(std::string one, std::string two, char op){
-    int i = 0;
-    node* first_node = find_node(one, i);
-    i = 0;
-    node* second_node = find_node(two, i);
-    operations(first_node, second_node, op);
-    track.tockTrie("operate");
-    return true;
-}
-
 bool TrieMemory::insert(std::string var_name, util::type_wrapper data){
     if (head == nullptr){
         head = new node();
@@ -138,6 +139,8 @@ void TrieMemory::delete_node(node* value){
     delete value;
 };
 
+
+
 node* TrieMemory::find_node(std::string var_name, int& i){
     node* temp = head;
     while(i < var_name.length()){
@@ -174,6 +177,12 @@ util::type_wrapper TrieMemory::find(std::string var_name){
 }
 
 
+
+
+
+// Splay Tree Implementation below
+
+//Zig rotation
 void SplayMemory::zig(node* temp){
     node* left = temp->left;
     node* top = temp->top;
@@ -188,6 +197,8 @@ void SplayMemory::zig(node* temp){
     temp->top = left;
     left->top = top;
 };
+
+//Zag Rotation
 void SplayMemory::zag(node* temp){
     node* right = temp->right;
     node* top = temp->top;
@@ -203,6 +214,10 @@ void SplayMemory::zag(node* temp){
     right->top = top;
 };
 
+
+
+
+//Find Node
 node* SplayMemory::find_node(std::string name){
     node* temp = head;
     while (temp->name != name){
@@ -220,7 +235,7 @@ node* SplayMemory::find_node(std::string name){
         return temp;
 }
 
-
+//Wrapper for finde_node
 util::type_wrapper SplayMemory::find(std::string name){
     node* temp = head;
     while (temp->name != name){
@@ -235,22 +250,6 @@ util::type_wrapper SplayMemory::find(std::string name){
         }
     }
     return temp->data;
-}
-
-
-void SplayMemory::splay(node* found){
-    while (found->top != nullptr && found != head){
-        node* temp = found->top;
-        if (temp->left == found){
-            zig(temp);
-        }
-        else if(temp->right == found){
-            zag(temp);
-        }
-        else{
-            break;
-        }
-    }
 }
 
 void SplayMemory::insert(std::string name, util::type_wrapper data){
@@ -285,7 +284,7 @@ void SplayMemory::delete_node(node* value){
         return;
     delete_node(value->left);
     delete_node(value->right);
-//    delete value;
+    delete value;
 };
 
 void SplayMemory::operate(std::string one, std::string two, char op){

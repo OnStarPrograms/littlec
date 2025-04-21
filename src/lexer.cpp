@@ -2,8 +2,10 @@
 #include <cctype>
 #include <unordered_map>
 
+// default Constructor
 Lexer::Lexer(const std::string& src) : source(src), current(0), line(1) {}
 
+// Case Systems
 char Lexer::peek() {
     if (current >= source.length()) return '\0';
     return source[current];
